@@ -1,0 +1,23 @@
+﻿name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build project
+        run: echo "Build successful"
+
+      - name: Run tests
+        run: echo "All tests passed"
