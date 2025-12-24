@@ -2,22 +2,20 @@
 
 on:
   push:
-    branches:
-      - master
+    branches: [ "master" ]
   pull_request:
-    branches:
-      - master
+    branches: [ "master" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Репозиторийді жүктеу
         uses: actions/checkout@v3
 
-      - name: Build project
-        run: echo "Build successful"
+      - name: Build қадамы
+        run: echo "Жоба сәтті жиналды"
 
-      - name: Run tests
-        run: echo "All tests passed"
+      - name: Тест қадамы
+        run: echo "Тесттер сәтті өтті"
