@@ -1,0 +1,26 @@
+name: Docker CI + Security
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Репозиторийді жүктеу
+        uses: actions/checkout@v3
+
+      - name: Docker image құру
+        run: docker build -t my-web-app .
+
+      - name: Trivy security scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: my-web-app
+          severity: HIGH,CRITICAL
+          exit-code: 1
+
+      - name: Image дайын
+        run: echo "Docker image қауіпсіз және сәтті құрылды"
